@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace library_api.Controllers
+namespace library.api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -21,6 +21,7 @@ namespace library_api.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+#pragma warning disable CA5394 // Do not use insecure randomness
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -28,6 +29,7 @@ namespace library_api.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+#pragma warning restore CA5394 // Do not use insecure randomness
         }
     }
 }

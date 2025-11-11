@@ -1,4 +1,4 @@
-namespace library_api
+namespace library.api
 {
     public class WeatherForecast
     {
