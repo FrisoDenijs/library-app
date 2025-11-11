@@ -1,0 +1,15 @@
+library
+- book
+-- author(s)
+-- title
+-- genre
+- author
+-- books
+- genre
+-- books
+
+
+ui
+books
+genres
+authors
