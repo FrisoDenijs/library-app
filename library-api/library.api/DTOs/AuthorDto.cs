@@ -1,4 +1,4 @@
 ﻿namespace library.api.DTOs
 {
-    public record AuthorDto(string Name);
+    public record AuthorDto(string? Id, string Name);
 }
