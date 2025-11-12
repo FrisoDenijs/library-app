@@ -2,11 +2,13 @@
 
 namespace library.api.Interfaces
 {
-    public interface IBookService
+    internal interface IBookService
     {
-        public BookDto Create(BookDto dto);
-        public BookDto Read(string Id);
-        public BookDto Update(BookDto dto);
-        public void Delete(string Id);
+        public BookDto CreateBook(BookDto dto);
+        public BookDto GetBook(string Id);
+        public BookDto UpdateBook(BookDto dto);
+        public void DeleteBook(string Id);
+
+        public IEnumerable<BookDto> GetAllBooks();
     }
 }

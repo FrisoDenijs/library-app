@@ -3,11 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace library.api.Interfaces
 {
-    public interface IAuthorService
+    internal interface IAuthorService
     {
-        public AuthorDto Create(AuthorDto dto);
-        public AuthorDto Read(string id);
-        public AuthorDto Update(AuthorDto dto);
-        public void Delete(string id);
+        public AuthorDto CreateAuthor(AuthorDto dto);
+        public AuthorDto GetAuthor(string id);
+        public AuthorDto UpdateAuthor(AuthorDto dto);
+        public void DeleteAuthor(string id);
+
+        public IEnumerable<AuthorDto> GetAllAuthors();
+        public IEnumerable<BookDto> GetAllBooksOfAuthor(string authorId);
     }
 }

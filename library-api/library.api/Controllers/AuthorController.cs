@@ -6,7 +6,7 @@ namespace library.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthorController : ControllerBase
+    internal class AuthorController : ControllerBase
     {
         private readonly IAuthorService _authorService;
 
@@ -18,25 +18,37 @@ namespace library.api.Controllers
         [HttpPost]
         public ActionResult<AuthorDto> Post(AuthorDto dto) {
             ArgumentNullException.ThrowIfNull(dto);
-            return Ok(_authorService.Create(dto));
+            return Ok(_authorService.CreateAuthor(dto));
         }
 
         [HttpGet]
         public ActionResult<AuthorDto> Get(string id)
         {
-            return Ok(_authorService.Read(id));
+            return Ok(_authorService.GetAuthor(id));
         }
 
         [HttpPut]
         public ActionResult<AuthorDto> Put(AuthorDto dto) {
             ArgumentNullException.ThrowIfNull(dto);
-            return Ok(_authorService.Update(dto));
+            return Ok(_authorService.UpdateAuthor(dto));
         }
 
         [HttpDelete]
         public ActionResult Delete(string id) {
-            _authorService.Delete(id);
+            ArgumentNullException.ThrowIfNull(id);
+            _authorService.DeleteAuthor(id);
             return Accepted();
         }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<AuthorDto>> GetAll() { 
+            return Ok(_authorService.GetAllAuthors());
+        }
+
+        [HttpGet]
+        public ActionResult<IEnumerable<BookDto>> GetAllBooksOfAuthor(string id) {
+            ArgumentNullException.ThrowIfNull(id);
+            return Ok(_authorService.GetAllBooksOfAuthor(id));
+        }   
     }
 }
